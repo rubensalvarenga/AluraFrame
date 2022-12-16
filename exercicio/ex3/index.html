@@ -1,0 +1,32 @@
+<!-- troca-troca.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    
+    <script>
+
+        const target = {email: 'abc@abc.com'};
+        handler1 = {};
+
+        const fun = new Proxy(target,handler1);
+
+        const handler2 = {
+            get(target, prop, received) {
+                    let novo = `**${target[prop]}**`;
+                    console.log('Armadilha aqui!!');
+                    return novo;
+                
+            }
+        }
+        
+        const proxy = new Proxy(target, handler2);
+
+        console.log (fun.email,proxy.email);
+
+    </script>
+</body>
+</html>
